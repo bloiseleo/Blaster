@@ -1,10 +1,9 @@
-﻿using Blaster.sprites;
-using Blaster.ui;
+﻿using Blaster.ui;
 using System.Text.RegularExpressions;
 
-namespace Blaster;
+namespace Blaster.sprites;
 
-internal class Hero(int x, int y): Drawable(x, y)
+internal class Hero(int x, int y) : Drawable(x, y)
 {
     protected override char[,] loadSprite()
     {

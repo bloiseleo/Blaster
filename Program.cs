@@ -1,14 +1,24 @@
-﻿using System.Text;
+﻿namespace Blaster;
 
-namespace Blaster;
+using Blaster.Listeners;
 
 internal class Program
 {
+    static Game game;
+    private static void startListener()
+    {
+        var keyboardThread = new Thread(new KeyboardListener(game).Start);
+        keyboardThread.Start();
+    }
     static void Main(string[] args)
     {
-        var map = new Map(10, 100);
-        var hero = new Hero(0, 0);
-        map.Draw(hero);
-        Console.WriteLine(map);
+        game = new Game();
+        startListener();
+        game.start();
+        while(true)
+        {
+            game.ExecuteActions();
+            Thread.Sleep(100);
+        }
     }
 }
